@@ -20,7 +20,7 @@ RUN curl https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.9/2023-01-11/bin/lin
 
 # Install k9s
 # https://github.com/derailed/k9s/releases
-RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.27.2/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
+RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
  && tar -xzf k9s_Linux_amd64.tar.gz \
  && chmod +x k9s \
  && mv k9s /usr/local/bin/ \
