@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu
 
 RUN apt-get update \
  && apt-get install -y curl wget sudo unzip vim \
@@ -14,13 +14,13 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 # Install kubectl
 # https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
-RUN curl https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.9/2023-01-11/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+RUN wget https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl \
  && kubectl version || true
 
 # Install k9s
 # https://github.com/derailed/k9s/releases
-RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
+RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
  && tar -xzf k9s_Linux_amd64.tar.gz \
  && chmod +x k9s \
  && mv k9s /usr/local/bin/ \
