@@ -27,6 +27,10 @@ RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v
  && rm -f k9s_Linux_amd64.tar.gz \
  && /usr/local/bin/k9s version
 
+# Install Helm
+RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
+ && helm version
+
 # Fix the bash paste issue
 RUN echo "set enable-bracketed-paste off" > ~/.inputrc
 
