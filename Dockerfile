@@ -34,4 +34,10 @@ RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | b
 # Fix the bash paste issue
 RUN echo "set enable-bracketed-paste off" > ~/.inputrc
 
+# Make the terminal colorful
+
+RUN apt-get install coreutils \
+ && echo "export TERM=xterm-256color" >> ~/.bashrc \
+ && echo "alias ll='ls -lah --color=auto'" >> ~/.bashrc
+
 WORKDIR /root
