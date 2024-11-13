@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update \
- && apt-get install -y curl wget sudo unzip vim \
+ && apt-get install -y curl wget sudo unzip vim git \
  && apt-get clean
 
 # Install aws-cli 2.0
@@ -20,7 +20,7 @@ RUN wget https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable
 
 # Install k9s
 # https://github.com/derailed/k9s/releases
-RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.32.5/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
+RUN wget --progress dot:giga https://github.com/derailed/k9s/releases/download/v0.32.6/k9s_Linux_amd64.tar.gz -O k9s_Linux_amd64.tar.gz \
  && tar -xzf k9s_Linux_amd64.tar.gz \
  && chmod +x k9s \
  && mv k9s /usr/local/bin/ \
